@@ -20,16 +20,25 @@ msgerForm.addEventListener("submit", event => {
   event.preventDefault();
 
   const msgText = msgerInput.value;
+  let file = document.getElementById('choseFileInput').files[0];
   if (!msgText) return;
 
-  appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
+  appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText,file);
   msgerInput.value = "";
 
   botResponse();
 });
 
-function appendMessage(name, img, side, text) {
+function appendMessage(name, img, side, text,img) {
   //   Simple solution for small apps
+  let image = '';
+  if(img !== ''){
+    image = `
+    <div class="msg-image">
+      <img src="${img}"/>
+    </div>
+    `
+  }
   const msgHTML = `
     <div class="msg ${side}-msg">
       <div class="msg-img" style="background-image: url(${img})"></div>
@@ -39,7 +48,7 @@ function appendMessage(name, img, side, text) {
           <div class="msg-info-name">${name}</div>
           <div class="msg-info-time">${formatDate(new Date())}</div>
         </div>
-
+        ${image}
         <div class="msg-text">${text}</div>
       </div>
     </div>
@@ -55,7 +64,7 @@ function botResponse() {
   const delay = msgText.split(" ").length * 100;
 
   setTimeout(() => {
-    appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
+    appendMessage(BOT_NAME, BOT_IMG, "left", msgText,'');
   }, delay);
 }
 
@@ -73,4 +82,9 @@ function formatDate(date) {
 
 function random(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
+}
+
+function choseFile(id){
+  let input = document.getElementById(id);
+  input.click();
 }

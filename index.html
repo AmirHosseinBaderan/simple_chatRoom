@@ -47,7 +47,9 @@
                 <div class="msg-info-name">امیر حسین بادارن</div>
                 <div class="msg-info-time">20:03</div>
               </div>
-      
+              <div class="msg-image">
+                  <img src="https://avatars.githubusercontent.com/u/65053996?v=4"/>
+              </div>
               <div class="msg-text">
                ها ها ها 
               </div>
@@ -58,6 +60,8 @@
         <form class="msger-inputarea">
           <input type="text" class="msger-input" placeholder="...پیام شما">
           <button type="submit" class="msger-send-btn">ارسال</button>
+          <button class="chose-files" onclick="choseFile('choseFileInput')">انتخاب فایل</button>
+          <input type="file" id="choseFileInput" style="display:none;"/>
         </form>
       </section>
       <script src="main.js"></script>
