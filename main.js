@@ -20,22 +20,23 @@ msgerForm.addEventListener("submit", event => {
   event.preventDefault();
 
   const msgText = msgerInput.value;
-  let file = document.getElementById('choseFileInput').files[0];
   if (!msgText) return;
 
-  appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText,file);
+  let base64 = convertToBase64(document.getElementById('choseFileInput'));
+
+  appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText,base64);
   msgerInput.value = "";
 
   botResponse();
 });
 
-function appendMessage(name, img, side, text,img) {
+function appendMessage(name, img, side, text,imgMessage) {
   //   Simple solution for small apps
   let image = '';
-  if(img !== ''){
+  if(imgMessage !== ''){
     image = `
     <div class="msg-image">
-      <img src="${img}"/>
+      <img src="${imgMessage}"/>
     </div>
     `
   }
@@ -87,4 +88,15 @@ function random(min, max) {
 function choseFile(id){
   let input = document.getElementById(id);
   input.click();
+}
+
+function convertToBase64(intput){
+  let fileReader = new FileReader();
+  fileReader.readAsDataURL(intput.files[0]);  
+  fileReader.addEventListener("load",function(){
+    console.log('loaded');
+  })
+  // fileReader.onlo = () => {
+  //   return fileReader.result;
+  // };  
 }
