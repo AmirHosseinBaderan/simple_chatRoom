@@ -127,6 +127,7 @@ body {
     padding: 15px;
     border-radius: 15px;
     background: var(--left-msg-bg);
+    margin-top: 10px;
 }
 
 .msg-info {

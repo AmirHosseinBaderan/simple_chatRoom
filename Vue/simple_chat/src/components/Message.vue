@@ -15,12 +15,17 @@
                   <div class="msg-text">
                         {{message}}
                   </div>
+                  <div v-if="isSender == 'yes'">
+                  <Icon name="check"/>
+                  <Icon v-if="isSeen == 'yes'" name="check"/>
+                  </div>
             </div>
     </div>
 </div>
 </template>
 
 <script>
+import Icon from 'vue-awesome/components/Icon'
     export default{
         name:"Message",
         props:{
@@ -30,7 +35,12 @@
             imageMessage:String,
             date:String,
             profileImage:String,
-            profileName:String
+            profileName:String,
+            isSender:String,
+            isSeen:String
+        },
+        components:{
+          Icon
         },
         methods: {
           getClass(){
@@ -39,6 +49,6 @@
           getProfileImage(){
               return `background-image:url(${this.profileImage})`
           }
-        },
+        }
     }
 </script>
