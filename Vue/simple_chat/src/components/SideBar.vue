@@ -20,7 +20,3 @@ export default{
 }
 
 </script>
-
-<style>
-@import "./assets/sidebar.css";
-</style>

@@ -1,6 +1,7 @@
 <template>
     <div class="msger">
     <headerComp Text="Chat With Test"/>
+    <sideBar/>
     <main id="main-msg" class="msger-chat">        
         <message v-bind:messages="allMessages"/>       
     </main>
@@ -17,13 +18,15 @@
 
 import headerComp from '../components/HeaderComp.vue'
 import message from '../components/Message.vue'
+import sideBar from '../components/SideBar.vue'
 
 export default {
     name:"MainLayout", 
     messageText:String,   
     components:{
         headerComp,
-        message
+        message,
+        sideBar
     }, 
     data(){
         return{
