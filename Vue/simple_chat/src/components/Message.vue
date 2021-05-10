@@ -1,23 +1,23 @@
 <template>
 <div>
-    <div  :class="getClass()">
-        <div class="msg-img" :style="getProfileImage()"></div>
+    <div v-for="(msg, index) in messages" :key="index" :class="getClass(msg.align)">
+        <div class="msg-img" :style="getProfileImage(msg.profileImage)"></div>
             <div class="msg-bubble">
                     <div class="msg-info">
-                        <div class="msg-info-name">{{profileName}}</div>
-                        <div class="msg-info-time">{{date}}</div>
+                        <div class="msg-info-name">{{msg.profileName}}</div>
+                        <div class="msg-info-time">{{msg.date}}</div>
                     </div>
-                  <div v-if="hasImage === 'yes'">
+                  <div v-if="msg.imageMessage != null && msg.imageMessage != ''">
                     <div  class="msg-image">
-                        <img :src="imageMessage" />
+                        <img :src="msg.imageMessage" />
                     </div>
                   </div>
                   <div class="msg-text">
-                        {{message}}
+                        {{msg.message}}
                   </div>
-                  <div v-if="isSender == 'yes'">
+                  <div v-if="msg.isSender == 'true'">
                   <Icon name="check"/>
-                  <Icon v-if="isSeen == 'yes'" name="check"/>
+                  <Icon v-if="msg.isSeen == 'true'" name="check"/>
                   </div>
             </div>
     </div>
@@ -29,25 +29,26 @@ import Icon from 'vue-awesome/components/Icon'
     export default{
         name:"Message",
         props:{
-            message:String,
-            align:String,
-            hasImage:String,
-            imageMessage:String,
-            date:String,
-            profileImage:String,
-            profileName:String,
-            isSender:String,
-            isSeen:String
+            messages:{
+              message:String,
+              align:String,
+              imageMessage:String,
+              date:String,
+              profileImage:String,
+              profileName:String,
+              isSender:String,
+              isSeen:String
+            }
         },
         components:{
           Icon
         },
         methods: {
-          getClass(){
-            return "msg" +" " + this.align + "-msg"
+          getClass(align){
+            return "msg" +" " + align + "-msg"
           },
-          getProfileImage(){
-              return `background-image:url(${this.profileImage})`
+          getProfileImage(img){
+            return `background-image: url(${img})`
           }
         }
     }
