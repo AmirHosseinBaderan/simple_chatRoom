@@ -18,7 +18,7 @@ export default {
 
 <style>
 @import "./assets/main.css";
-@import "./assets/sidebar.css";
+@import "./assets/loader.css";
 </style>
 
 

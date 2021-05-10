@@ -1,16 +1,15 @@
 <template>
     <div class="msger">
-    <headerComp Text="Chat With Test"/>
-    <sideBar/>
-    <main id="main-msg" class="msger-chat">        
-        <message v-bind:messages="allMessages"/>       
-    </main>
-     <div class="msger-inputarea">
-        <input type="text" v-model="messageText" class="msger-input" placeholder="...پیام شما">
-        <button class="msger-send-btn" v-on:click="sendMessage()"> ارسال </button>
-        <button class="chose-files" v-on:click="choseFile('choseFileInput')">انتخاب فایل</button>
-        <input type="file" id="choseFileInput" style="display:none;" />
-    </div>    
+        <headerComp Text="Chat With Test"/>
+        <main id="main-msg" class="msger-chat">       
+            <message v-bind:messages="allMessages"/>       
+        </main>
+         <div class="msger-inputarea">
+            <input type="text" v-model="messageText" class="msger-input" placeholder="...پیام شما">
+            <button class="msger-send-btn" v-on:click="sendMessage()"> ارسال </button>
+            <button class="chose-files" v-on:click="choseFile('choseFileInput')">انتخاب فایل</button>
+            <input type="file" id="choseFileInput" style="display:none;" />
+        </div>    
     </div>
 </template>
 
@@ -18,15 +17,13 @@
 
 import headerComp from '../components/HeaderComp.vue'
 import message from '../components/Message.vue'
-import sideBar from '../components/SideBar.vue'
 
 export default {
     name:"MainLayout", 
     messageText:String,   
     components:{
         headerComp,
-        message,
-        sideBar
+        message
     }, 
     data(){
         return{

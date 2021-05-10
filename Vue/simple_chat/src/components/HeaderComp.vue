@@ -1,7 +1,7 @@
 <template>
     <div>
         <header class="msger-header">
-            <div class="msger-header-title">
+            <div class="msger-header-title" >
                 <Icon name="comment-alt"/>{{this.Text}}
             </div>
             <div class="msger-header-options">

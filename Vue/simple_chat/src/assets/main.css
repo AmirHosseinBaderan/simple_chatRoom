@@ -64,6 +64,13 @@ body {
     height: calc(100% - 50px);
 }
 
+@media (max-width: 960px) {
+    .main {
+        width: 60%;
+        margin: 25px 50px;
+    }
+}
+
 .msger-header {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -194,13 +201,13 @@ body {
     -ms-flex: 1;
     flex: 1;
     background: #ddd;
-    transition:1s;
-    border-radius:15px;
+    transition: 1s;
+    border-radius: 15px;
 }
 
-.msger-input:focus{
-    box-shadow:2px 2px 8px gray;
-    outline:none;
+.msger-input:focus {
+    box-shadow: 2px 2px 8px gray;
+    outline: none;
 }
 
 .msger-send-btn {
